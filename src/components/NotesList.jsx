@@ -1,10 +1,7 @@
-import React from 'react'
 import Note from './Note';
 
-function NotesList({ notes = [] }) {
+function NotesList({ notes = [], onDelete }) {
   if (notes.length === 0) {
-    console.log('no notes');
-    
     return (
       <p className="text-center text-gray-500">
         No Notes Yet
@@ -16,7 +13,8 @@ function NotesList({ notes = [] }) {
       {notes.map((note) => (
         <Note
           key={note.id}
-          note={note} 
+          note={note}
+          onDelete={onDelete}
         />
       ))}
     </div>

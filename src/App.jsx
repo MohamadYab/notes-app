@@ -4,6 +4,12 @@ import NotesList from './components/NotesList';
 
 function App() {
   const [notes, setNotes] = useState([]);
+
+  function deleteNote(id) {
+    console.log(id);
+    const updatedNotes = notes.filter((note) => note.id !== id);
+    setNotes(updatedNotes);
+  }
   return (
     <div
       className='max-w-lg mx-auto mt-10 p-6 bg-gray-100 rounded-lg shadow-lg'
@@ -13,7 +19,10 @@ function App() {
         notes={notes}
         setNotes={setNotes}
       />
-      <NotesList notes={notes}/>
+      <NotesList
+        notes={notes}
+        onDelete={deleteNote}
+      />
     </div>
   )
 }
